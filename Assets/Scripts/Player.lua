@@ -1,4 +1,5 @@
 require "Weapons"
+require "Bullets"
 
 local Player = {
     entityName = "Fighter",

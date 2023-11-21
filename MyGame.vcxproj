@@ -151,7 +151,7 @@
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Scripts\Bullet.lua" />
+    <None Include="Assets\Scripts\Bullets.lua" />
     <None Include="Assets\Scripts\Config.lua" />
     <None Include="Assets\Scripts\Player.lua" />
     <None Include="Assets\Scripts\Weapons.lua" />

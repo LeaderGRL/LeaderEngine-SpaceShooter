@@ -45,7 +45,7 @@
     <None Include="Assets\Scripts\Config.lua">
       <Filter>Fichiers sources</Filter>
     </None>
-    <None Include="Assets\Scripts\Bullet.lua">
+    <None Include="Assets\Scripts\Bullets.lua">
       <Filter>Fichiers sources</Filter>
     </None>
   </ItemGroup>
