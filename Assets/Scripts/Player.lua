@@ -75,10 +75,13 @@ function Player:SetSpeed(speed)
 end
 
 function Player:RegisterEvents()
-    self.EventManager:RegisterEvent(Input.INPUT_EVENT_KEY_PRESSED, function(event) self:OnKeyPressed(event) end)
+    -- Anonymous function avoid to call the OnKeyPressed function directly
+    self.EventManager:RegisterEvent(Input.INPUT_EVENT_KEY_PRESSED, function(event) self:OnKeyPressed(event) end) 
 end
 
+function Player:Update(dt)
 
+end
 -- Create the player and register events
 Player:Create()
 Player:RegisterEvents()

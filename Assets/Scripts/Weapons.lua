@@ -18,7 +18,6 @@ function Weapons:Create()
 
     weapons:SetPosition(200,200)
     Bullets:Create()
-
 end
 
 function Weapons:OnMousePressed(event)
@@ -38,6 +37,10 @@ end
 function Weapons:RegisterEvents()
     self.EventManager:RegisterEvent(Input.INPUT_EVENT_MOUSE_PRESSED, function(event) self:OnMousePressed(event) end)
     self.EventManager:RegisterEvent(Input.INPUT_EVENT_MOUSE_RELEASED, function(event) self:OnMouseReleased(event) end)
+end
+
+function Weapons:Update(dt)
+
 end
 
 return Weapons

@@ -7,8 +7,8 @@
 int main()
 {
     LeaderEngine::Application app;
-	Player player;
-	player.Init();
-	app.Run();
+	//Player player;
+	//player.Init();
+	//app.Run();
 	return 0;
 }
