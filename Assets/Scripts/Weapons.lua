@@ -40,7 +40,7 @@ function Weapons:RegisterEvents()
 end
 
 function Weapons:Update(dt)
-
+    --print(dt)
 end
 
 return Weapons

@@ -80,7 +80,7 @@ function Player:RegisterEvents()
 end
 
 function Player:Update(dt)
-
+    print(dt)
 end
 -- Create the player and register events
 Player:Create()

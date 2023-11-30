@@ -20,11 +20,10 @@ function Bullets:Move(dt)
     print("eee")
     local bullets = self.EManager:GetEntity(self.bulletsName)
     local position = bullets:GetPosition()
-    bullets:SetPosition(position.x, position.y * 100 * dt)
+    bullets:SetPosition(position.x, position.y - 1 * dt / 1000)
 end
 
 function Bullets:Update(dt)
-    print(dt)
     self:Move(dt)
 end
 
