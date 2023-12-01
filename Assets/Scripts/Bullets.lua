@@ -1,6 +1,6 @@
 Bullets = {
     bulletsName = "Rocket",
-    
+    speed = 100,
     EManager = EntityManager:GetInstance(),
     RManager = ResourceManager:GetInstance(),
     EventManager = EventManager:GetInstance(),
@@ -19,7 +19,10 @@ end
 function Bullets:Move(dt)
     local bullets = self.EManager:GetEntity(self.bulletsName)
     local position = bullets:GetPosition()
-    bullets:SetPosition(position.x, position.y - 1 * dt / 1000)
+    local x = position.x + self.speed * dt
+    local y = position.y - self.speed * dt
+    bullets:SetPosition(position.x,y)
+    --bullets:SetPosition(position.x, position.y - 1 * dt)
 end
 
 function Bullets:Update(dt)
