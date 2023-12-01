@@ -151,6 +151,7 @@
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Scripts\Camera.lua" />
     <None Include="Assets\Scripts\Bullets.lua" />
     <None Include="Assets\Scripts\Config.lua" />
     <None Include="Assets\Scripts\Player.lua" />

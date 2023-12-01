@@ -48,5 +48,8 @@
     <None Include="Assets\Scripts\Bullets.lua">
       <Filter>Fichiers sources</Filter>
     </None>
+    <None Include="Assets\Scripts\Camera.lua">
+      <Filter>Fichiers sources</Filter>
+    </None>
   </ItemGroup>
 </Project>

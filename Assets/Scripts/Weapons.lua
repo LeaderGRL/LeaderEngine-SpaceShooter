@@ -17,11 +17,11 @@ function Weapons:Create()
     end
 
     weapons:SetPosition(200,200)
-    Bullets:Create()
 end
 
 function Weapons:OnMousePressed(event)
     if sf.MouseButtonEvent.GetMouseEventCode(event.mouseButton) == sf.LEFT then
+        Bullets:Create()
         self.EManager:GetEntity(self.weaponsName):GetComponent(Component.ANIMATION):PlayAnimation("FighterWeaponsAnimation", true)
         self.EManager:GetEntity(Bullets.bulletsName):GetComponent(Component.ANIMATION):PlayAnimation("RocketAnimation", true)
     end
