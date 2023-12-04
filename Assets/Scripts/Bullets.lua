@@ -6,15 +6,24 @@ Bullets = {
     EventManager = EventManager:GetInstance(),
 }
 
-function Bullets:Create()
-    local bullets = self.EManager:GetEntity(self.bulletsName)
+--Bullets.__index = Bullets
 
-    if bullets then
-        bullets:AddComponent(Component.ANIMATION)
-    end
-    
-    bullets:SetPosition(200,200)
+function Bullets.New()
+    local instance = {}
+    setmetatable(instance, {__index = Bullets})
+
+    return instance
 end
+
+--function Bullets:Create()
+--    local bullets = self.EManager:GetEntity(self.bulletsName)
+
+--    if bullets then
+--        bullets:AddComponent(Component.ANIMATION)
+--    end
+
+--    bullets:SetPosition(200,200)
+--end
 
 function Bullets:Move(dt)
     local bullets = self.EManager:GetEntity(self.bulletsName)

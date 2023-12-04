@@ -21,7 +21,8 @@ end
 
 function Weapons:OnMousePressed(event)
     if sf.MouseButtonEvent.GetMouseEventCode(event.mouseButton) == sf.LEFT then
-        Bullets:Create()
+        local bullet = self.EManager:CreateEntity("Bullet")
+--        Bullets:Create()
         self.EManager:GetEntity(self.weaponsName):GetComponent(Component.ANIMATION):PlayAnimation("FighterWeaponsAnimation", true)
         self.EManager:GetEntity(Bullets.bulletsName):GetComponent(Component.ANIMATION):PlayAnimation("RocketAnimation", true)
     end
@@ -30,7 +31,7 @@ end
 function Weapons:OnMouseReleased(event)
     if sf.MouseButtonEvent.GetMouseEventCode(event.mouseButton) == sf.LEFT then
         self.EManager:GetEntity(self.weaponsName):GetComponent(Component.ANIMATION):StopAnimation("FighterWeaponsAnimation")
-        self.EManager:GetEntity(Bullets.bulletsName):GetComponent(Component.ANIMATION):StopAnimation("RocketAnimation")
+--        self.EManager:GetEntity(Bullets.bulletsName):GetComponent(Component.ANIMATION):StopAnimation("RocketAnimation")
     end
 end
 
