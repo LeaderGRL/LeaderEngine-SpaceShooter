@@ -1,5 +1,6 @@
 Bullets = {
     bulletsName = "Rocket",
+    animationName = "RocketAnimation",
     speed = 100,
     EManager = EntityManager:GetInstance(),
     RManager = ResourceManager:GetInstance(),
@@ -31,6 +32,8 @@ function Bullets:Move(dt)
     local x = position.x + self.speed * dt
     local y = position.y - self.speed * dt
     bullets:SetPosition(position.x,y)
+--    bullets:GetComponent(Component.ANIMATION):PlayAnimation(self.animationName, true)
+
     --bullets:SetPosition(position.x, position.y - 1 * dt)
 end
 

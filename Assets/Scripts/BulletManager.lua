@@ -1,15 +1,17 @@
-local BulletManager = {
+BulletManager = {
     instance = nil
 }
 
-function BulletManager:getInstance()
+function BulletManager:GetInstance()
     if not self.instance then
-        self.instance = self:new()
+        self.instance = self:New()
     end
     return self.instance
 end
 
-function BulletManager:new()
+function BulletManager:New()
+    print("New BulletManager created")
+
     local obj = {
         bulletList = {}
     }
@@ -18,11 +20,11 @@ function BulletManager:new()
     return obj
 end
 
-function BulletManager:addBullet(bullet)
+function BulletManager:AddBullet(bullet)
     table.insert(self.bulletList, bullet)
 end
 
-function BulletManager:removeBullet(bullet)
+function BulletManager:RemoveBullet(bullet)
     for i, v in ipairs(self.bulletList) do
         if v == bullet then
             table.remove(self.bulletList, i)
@@ -31,12 +33,14 @@ function BulletManager:removeBullet(bullet)
     end
 end
 
-function BulletManager:removeAllBullet()
+function BulletManager:RemoveAllBullet()
     self.bulletList = {}
 end
 
-function BulletManager:update(dt)
+function BulletManager:Update(dt)
     for i, v in ipairs(self.bulletList) do
-        v:update(dt)
+        v:Update(dt)
     end
 end
+
+return BulletManager

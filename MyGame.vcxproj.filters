@@ -46,7 +46,10 @@
     <None Include="Assets\Scripts\Rocket.lua">
       <Filter>Fichiers sources</Filter>
     </None>
-    <None Include="Assets\Scripts\BulletsManager.lua">
+    <None Include="Assets\Scripts\BulletManager.lua">
+      <Filter>Fichiers sources</Filter>
+    </None>
+    <None Include="Assets\Scripts\GameManager.lua">
       <Filter>Fichiers sources</Filter>
     </None>
   </ItemGroup>

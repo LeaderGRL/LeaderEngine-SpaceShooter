@@ -24,4 +24,8 @@ function Camera:Create()
     end
 end
 
+function Camera:Update(dt)
+
+end
+
 Camera:Create()

@@ -1,16 +1,17 @@
 require "Weapons"
 require "Bullets"
 
-local Player = {
+Player = {
     entityName = "Fighter",
     speed = 10,
     EManager = EntityManager:GetInstance(),
     RManager = ResourceManager:GetInstance(),
     EventManager = EventManager:GetInstance(),
+    BManager = BulletManager:GetInstance(),
 }
 
 function Player:Create()
-    local player = self.EManager:GetEntity(self.entityName)
+    local player = self.EManager:CreateEntity(self.entityName)
     local playerEffect = self.EManager:CreateEntity("playerEffect")
     
     if player then
@@ -39,7 +40,8 @@ function Player:Create()
     player:SetPosition(200,200)
     playerEffect:SetPosition(200,200)
     Weapons:Create()
-    self.EManager:GetEntity(Weapons.weaponsName)
+    Weapons:RegisterEvents()
+    self.EManager:CreateEntity(Weapons.weaponsName)
 end
 
 function Player:OnKeyPressed(event)
@@ -80,9 +82,12 @@ function Player:RegisterEvents()
 end
 
 function Player:Update(dt)
+    self.BManager:Update(dt) -- Temp
 --    print(dt)
 end
 -- Create the player and register events
-Player:Create()
-Player:RegisterEvents()
-Weapons:RegisterEvents()
+--Player:Create()
+--Player:RegisterEvents()
+--Weapons:RegisterEvents()
+
+return Player

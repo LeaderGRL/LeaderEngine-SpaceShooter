@@ -1,5 +1,6 @@
-
+require "BulletManager"
 require "Bullets"
+require "Rocket"
 
 Weapons = {
     weaponsName = "FighterWeapons",
@@ -7,10 +8,11 @@ Weapons = {
     EManager = EntityManager:GetInstance(),
     RManager = ResourceManager:GetInstance(),
     EventManager = EventManager:GetInstance(),
+    BManager = BulletManager:GetInstance(),
 }
 
 function Weapons:Create()
-    local weapons = self.EManager:GetEntity(self.weaponsName)
+    local weapons = self.EManager:CreateEntity(self.weaponsName)
     
     if weapons then
         weapons:AddComponent(Component.ANIMATION)
@@ -21,10 +23,15 @@ end
 
 function Weapons:OnMousePressed(event)
     if sf.MouseButtonEvent.GetMouseEventCode(event.mouseButton) == sf.LEFT then
-        local bullet = self.EManager:CreateEntity("Bullet")
---        Bullets:Create()
+--        local bullet = self.EManager:CreateEntity("Bullet")
+--        bullet:AddComponent(Component.SCRIPT)
+--        bullet:GetComponent(Component.SCRIPT):LoadScript("Assets/Scripts/Rocket.lua")
+        local rocket = Rocket:New()
+
+        self.BManager:AddBullet(rocket)
+        
         self.EManager:GetEntity(self.weaponsName):GetComponent(Component.ANIMATION):PlayAnimation("FighterWeaponsAnimation", true)
-        self.EManager:GetEntity(Bullets.bulletsName):GetComponent(Component.ANIMATION):PlayAnimation("RocketAnimation", true)
+        --self.EManager:GetEntity(Bullets.bulletsName):GetComponent(Component.ANIMATION):PlayAnimation("RocketAnimation", true)
     end
 end
 

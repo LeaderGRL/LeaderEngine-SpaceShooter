@@ -156,10 +156,11 @@
     <Image Include="..\..\..\Pictures\blanket.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Scripts\BulletsManager.lua" />
+    <None Include="Assets\Scripts\BulletManager.lua" />
     <None Include="Assets\Scripts\Camera.lua" />
     <None Include="Assets\Scripts\Bullets.lua" />
     <None Include="Assets\Scripts\Config.lua" />
+    <None Include="Assets\Scripts\GameManager.lua" />
     <None Include="Assets\Scripts\Player.lua" />
     <None Include="Assets\Scripts\Rocket.lua" />
     <None Include="Assets\Scripts\Weapons.lua" />
