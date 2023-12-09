@@ -23,22 +23,16 @@ end
 
 function Weapons:OnMousePressed(event)
     if sf.MouseButtonEvent.GetMouseEventCode(event.mouseButton) == sf.LEFT then
---        local bullet = self.EManager:CreateEntity("Bullet")
---        bullet:AddComponent(Component.SCRIPT)
---        bullet:GetComponent(Component.SCRIPT):LoadScript("Assets/Scripts/Rocket.lua")
-        local rocket = Rocket:New()
-
+        local weapons = self.EManager:GetEntity(self.weaponsName)
+        local rocket = Rocket:New(weapons)
         self.BManager:AddBullet(rocket)
-        
-        self.EManager:GetEntity(self.weaponsName):GetComponent(Component.ANIMATION):PlayAnimation("FighterWeaponsAnimation", true)
-        --self.EManager:GetEntity(Bullets.bulletsName):GetComponent(Component.ANIMATION):PlayAnimation("RocketAnimation", true)
+        weapons:GetComponent(Component.ANIMATION):PlayAnimation("FighterWeaponsAnimation", true)
     end
 end
 
 function Weapons:OnMouseReleased(event)
     if sf.MouseButtonEvent.GetMouseEventCode(event.mouseButton) == sf.LEFT then
         self.EManager:GetEntity(self.weaponsName):GetComponent(Component.ANIMATION):StopAnimation("FighterWeaponsAnimation")
---        self.EManager:GetEntity(Bullets.bulletsName):GetComponent(Component.ANIMATION):StopAnimation("RocketAnimation")
     end
 end
 

@@ -43,7 +43,7 @@ function Player:Create()
     --playerEffect:SetPosition(25,25)
     Weapons:Create()
     Weapons:RegisterEvents()
-    self.EManager:CreateEntity(Weapons.weaponsName)
+    --self.EManager:CreateEntity(Weapons.weaponsName)
 end
 
 function Player:OnKeyPressed(event)
