@@ -25,6 +25,9 @@ function Rocket:New(weaponsEntity)
     end
     entity:AddComponent(Component.ANIMATION)
     entity:GetComponent(Component.ANIMATION):PlayAnimation(instance.animationName, true)
+    entity:AddComponent(Component.BOX_COLLIDER)
+    local boxCollider = entity:GetComponent(Component.BOX_COLLIDER)
+    boxCollider:SetSize(Vector2f(9,9))
     
     --instance.weapons = weaponsEntity
 
