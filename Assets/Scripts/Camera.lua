@@ -10,12 +10,12 @@ function Camera:Create()
     local camera = self.EManager:GetEntity(self.cameraName)
     
     if camera then
-        camera:AddComponent(Component.CAMERA)
+        camera:AddCameraComponent()
     end
     
     camera:SetPosition(0,0)
         
-    local cameraComponent = camera:GetComponent(Component.CAMERA)
+    local cameraComponent = camera:GetCameraComponent()
 
     if cameraComponent then
         cameraComponent:SetZoom(1)

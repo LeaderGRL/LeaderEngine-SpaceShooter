@@ -15,17 +15,17 @@ function Player:Create()
     local playerEffect = player:AddChild("playerEffect")
     
     if player then
-        player:AddComponent(Component.SPRITE2D)
-        player:AddComponent(Component.BOX_COLLIDER)
+        player:AddSprite2DComponent()
+        player:AddBoxColliderComponent(Vector2f(64,64))
     end
 
     if playerEffect then
-        playerEffect:AddComponent(Component.ANIMATION)
+        playerEffect:AddSprite2DComponent()
     end
     
-    local fighter = player:GetComponent(Component.SPRITE2D)
-    local boxCollider = player:GetComponent(Component.BOX_COLLIDER)
-    local fighterEffect = playerEffect:GetComponent(Component.ANIMATION)
+    local fighter = player:GetSprite2DComponent()
+    local boxCollider = player:GetBoxColliderComponent()
+    local fighterEffect = playerEffect:GetSprite2DComponent()
 
     if fighter then
         fighter:SetSprite(self.RManager:GetTexture("Fighter"))
