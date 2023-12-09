@@ -13,14 +13,20 @@ function Rocket:New(weaponsEntity)
     setmetatable(instance, {__index = Rocket})
 
     instance.bulletsName = "Rocket" .. tostring(self.rocketCounter)
-    --print(instance.bulletsName)
-    local entity = weaponsEntity:AddChild(instance.bulletsName)
-    if entity then
-        entity:AddComponent(Component.ANIMATION)
-        entity:GetComponent(Component.ANIMATION):PlayAnimation(instance.animationName, true)
+    local entity = instance.EManager:CreateEntity(instance.bulletsName)
+    if not entity then
+        return
     end
+
+    if self.rocketCounter % 2 == 0 then
+        entity:SetPosition(weaponsEntity:GetPosition().x + 16, weaponsEntity:GetPosition().y + 16) -- TODO : Refactor the function in C++ to allow a Vector2f in parameter
+    else
+        entity:SetPosition(weaponsEntity:GetPosition().x + 40, weaponsEntity:GetPosition().y + 16) -- TODO : Refactor the function in C++ to allow a Vector2f in parameter
+    end
+    entity:AddComponent(Component.ANIMATION)
+    entity:GetComponent(Component.ANIMATION):PlayAnimation(instance.animationName, true)
     
-    instance.weapons = weaponsEntity
+    --instance.weapons = weaponsEntity
 
     return instance
 end

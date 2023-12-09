@@ -12,6 +12,10 @@ Bullets = {
 function Bullets.New()
     local instance = {}
     setmetatable(instance, {__index = Bullets})
+    --local bullet = self.EManager:GetEntity(self.bulletsName)
+    --print(instance.weapons)
+    --bullet:SetPosition(self.weapons:GetPosition().x, self.weapons:GetPosition().y)
+
     --instance.weapons = weaponsEntity
     return instance
 end
@@ -27,9 +31,9 @@ end
 --end
 
 function Bullets:Move(dt)
-    --local bullets = self.EManager:GetEntity(self.bulletsName)
-    local bullet = self.weapons:GetChild(self.bulletsName)
-    print("yy")
+    --print(self.weapons)
+    local bullet = self.EManager:GetEntity(self.bulletsName)
+    --local bullet = self.weapons:GetChild(self.bulletsName)
     local position = bullet:GetPosition()
     local x = position.x + self.speed * dt
     local y = position.y - self.speed * dt
