@@ -23,8 +23,8 @@ function Rocket:New(weaponsEntity)
     else
         entity:SetPosition(weaponsEntity:GetPosition().x + 40, weaponsEntity:GetPosition().y + 16) -- TODO : Refactor the function in C++ to allow a Vector2f in parameter
     end
-    entity:AddSprite2DComponent()
-    entity:GetSprite2DComponent():PlayAnimation(instance.animationName, true)
+    entity:AddAnimation2DComponent(instance.animationName, true, true)
+    -- entity:GetSprite2DComponent():PlayAnimation(instance.animationName, true)
     entity:AddBoxColliderComponent()
     local boxCollider = entity:GetBoxColliderComponent()
     boxCollider:SetSize(Vector2f(9,9))

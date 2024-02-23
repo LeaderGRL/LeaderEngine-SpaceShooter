@@ -15,7 +15,7 @@ function Weapons:Create()
     local weapons = self.EManager:CreateEntity(self.weaponsName)
     
     if weapons then
-        weapons:AddSprite2DComponent()
+        weapons:AddAnimation2DComponent("FighterWeaponsAnimation", false, false)
     end
 
     weapons:SetPosition(200,200)
@@ -26,13 +26,13 @@ function Weapons:OnMousePressed(event)
         local weapons = self.EManager:GetEntity(self.weaponsName)
         local rocket = Rocket:New(weapons)
         self.BManager:AddBullet(rocket)
-        weapons:GetSprite2DComponent():PlayAnimation("FighterWeaponsAnimation", true)
+        weapons:GetAnimation2DComponent():PlayAnimation(true)
     end
 end
 
 function Weapons:OnMouseReleased(event)
     if sf.MouseButtonEvent.GetMouseEventCode(event.mouseButton) == sf.LEFT then
-        self.EManager:GetEntity(self.weaponsName):GetSprite2DComponent():StopAnimation("FighterWeaponsAnimation")
+        self.EManager:GetEntity(self.weaponsName):GetAnimation2DComponent():StopAnimation()
     end
 end
 

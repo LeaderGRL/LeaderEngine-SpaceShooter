@@ -20,12 +20,12 @@ function Player:Create()
     end
 
     if playerEffect then
-        playerEffect:AddSprite2DComponent()
+        playerEffect:AddAnimation2DComponent("FighterEffectAnimation", true, true)
     end
     
     local fighter = player:GetSprite2DComponent()
     local boxCollider = player:GetBoxColliderComponent()
-    local fighterEffect = playerEffect:GetSprite2DComponent()
+    --local fighterEffect = playerEffect:GetSprite2DComponent()
 
     if fighter then
         fighter:SetSpriteByName("Fighter")
@@ -35,9 +35,9 @@ function Player:Create()
         boxCollider:SetSize(Vector2f(64,64))
     end
 
-    if fighterEffect then
-        fighterEffect:PlayAnimation("FighterEffectAnimation", true)
-    end
+--    if fighterEffect then
+--        fighterEffect:PlayAnimation("FighterEffectAnimation", true)
+--    end
     
     player:SetPosition(200,200)
     --playerEffect:SetPosition(25,25)
@@ -66,13 +66,9 @@ end
 
 function Player:Move(x, y)
     local player = self.EManager:GetEntity(self.entityName)
-    --local playerEffect = player:GetChild("playerEffect")
     local playerWeapons = self.EManager:GetEntity(Weapons.weaponsName)
     
     player:Move_V(Vector2f(x * self.speed, y * self.speed))
-    if playerEffect then
-        --playerEffect:Move_V(Vector2f(x * self.speed, y * self.speed))
-    end
     playerWeapons:Move_V(Vector2f(x * self.speed, y * self.speed))
 end
 
