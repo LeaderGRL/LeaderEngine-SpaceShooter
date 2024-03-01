@@ -17,6 +17,7 @@ function Player:Create()
     if player then
         player:AddSprite2DComponent()
         player:AddBoxColliderComponent(Vector2f(64,64))
+        player:AddNetworkingComponent()
     end
 
     if playerEffect then
