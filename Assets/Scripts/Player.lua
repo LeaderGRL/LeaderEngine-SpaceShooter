@@ -4,7 +4,7 @@ require "Bullets"
 Player = {
     entityName = "Fighter",
     speed = 10,
-    EManager = EntityManager:GetInstance(),
+    EManager = SceneManager:GetInstance():GetCurrentScene():GetEntityManager(),
     RManager = ResourceManager:GetInstance(),
     EventManager = EventManager:GetInstance(),
     BManager = BulletManager:GetInstance(),

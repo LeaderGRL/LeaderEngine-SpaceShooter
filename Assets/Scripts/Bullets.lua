@@ -2,7 +2,7 @@ Bullets = {
     bulletsName = "Rocket",
     animationName = "RocketAnimation",
     speed = 100,
-    EManager = EntityManager:GetInstance(),
+    EManager = SceneManager:GetInstance():GetCurrentScene():GetEntityManager(),
     RManager = ResourceManager:GetInstance(),
     EventManager = EventManager:GetInstance(),
 }

@@ -1,7 +1,7 @@
 Camera = {
     cameraName = "MainCamera",
     
-    EManager = EntityManager:GetInstance(),
+    EManager = SceneManager:GetInstance():GetCurrentScene():GetEntityManager(),
     RManager = ResourceManager:GetInstance(),
     EventManager = EventManager:GetInstance(),
 }
