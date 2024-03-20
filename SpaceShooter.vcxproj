@@ -150,6 +150,7 @@
     <None Include="Assets\Scripts\Scripts.config" />
     <None Include="Assets\Scripts\Scripts.luaproj" />
     <None Include="Assets\Scripts\Weapons.lua" />
+    <None Include="MainMenu.lua" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

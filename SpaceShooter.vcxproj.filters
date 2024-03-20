@@ -39,5 +39,8 @@
     <None Include="Assets\Scripts\Weapons.lua">
       <Filter>Scripts</Filter>
     </None>
+    <None Include="MainMenu.lua">
+      <Filter>Scripts</Filter>
+    </None>
   </ItemGroup>
 </Project>
