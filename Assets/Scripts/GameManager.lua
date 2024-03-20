@@ -8,7 +8,8 @@ function GameManager:New()
 end
 
 function GameManager:Update(dt)
-    Player:Update(dt)
+    --Player:Update(dt)
+    MainMenu:Update(dt)
 end
 
 GameManager:New()
