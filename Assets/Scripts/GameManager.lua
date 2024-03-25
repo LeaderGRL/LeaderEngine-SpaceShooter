@@ -11,6 +11,7 @@ local function GameManager(super) -- super is optional, if not provided, it will
         RManager = ResourceManager:GetInstance(),
         EventManager = EventManager:GetInstance(),
         NetworkManager = NetworkManager:GetInstance(),
+        SceneManager = SceneManager:GetInstance(),
     }
 
     gameManager.__index = gameManager -- failed table lookups on the instances should fallback to the class table, to get methods and fields

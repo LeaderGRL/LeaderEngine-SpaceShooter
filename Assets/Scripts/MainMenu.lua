@@ -1,4 +1,4 @@
-require "GameManager"
+local GameManager = require "GameManager"
 
 MainMenu = {
     editBox = tgui.EditBox.Create()
@@ -7,7 +7,7 @@ MainMenu = {
 function MainMenu:new()
     local inputField = {editBox = tgui.EditBox.Create()}
     setmetatable(inputField, self)
-    self.__index = self
+    self.__index = self 
     return inputField
 end
 
@@ -16,6 +16,7 @@ function MainMenu:Update(dt)
 end
 
 function MainMenu:InitEditBox(sizeX, sizeY)
+    print(self.editBox)
     local text = tgui.String("ip")
     gui:Add(self.editBox, text)
 
@@ -24,22 +25,26 @@ function MainMenu:InitEditBox(sizeX, sizeY)
     local centerY = tgui.Layout((window:getSize().y - sizeY:getValue()) / 2)
     self.editBox:SetPosition(centerX, centerY)
 
-    --self.editBox:SetText(text)
-
     -- Connect the return key press event
     tgui.OnReturnKeyPress(self.editBox, function() self:OnEditBoxReturn() end)
-        print(self.editBox)
-
 end
 
 function MainMenu:OnEditBoxReturn()
-    MainMenu:SendIP()
+    local ip = self.editBox:GetText():ToStdString()
+
+    MainMenu:SendIP(ip)
+    
+    --GameManager.SceneManager:
 end
 
-function MainMenu:SendIP()
-    gameManager.NetworkManager:SetIP(self.editBox:GetText():ToStdString())
+function MainMenu:SendIP(ip)
+    local ipAddress = IpAddress(ip)
+    GameManager.NetworkManager:SetIp(ipAddress)
+    print("IP: " .. ip)
+    print("IP Address: " .. GameManager.NetworkManager:GetIp():ToString())
 end
 
-MainMenu:InitEditBox(tgui.Layout(200), tgui.Layout(40))
+local mainMenu = MainMenu:new()
+mainMenu:InitEditBox(tgui.Layout(200), tgui.Layout(40))
 
-return MainMenu
+return mainMenu
