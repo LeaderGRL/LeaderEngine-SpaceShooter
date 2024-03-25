@@ -32,7 +32,13 @@ end
 function MainMenu:OnEditBoxReturn()
     local ip = self.editBox:GetText():ToStdString()
 
-    MainMenu:SendIP(ip)
+    --MainMenu:SendIP(ip)
+    
+    local newScene = GameManager.SceneManager:CreateScene()
+    GameManager.SceneManager:ChangeScene(newScene)
+
+    local player = GameManager.SceneManager:GetEntityManager():CreateEntity("Player")
+    player:AddScriptComponent("Assets/Scripts/Player.lua")
     
     --GameManager.SceneManager:
 end
@@ -42,6 +48,7 @@ function MainMenu:SendIP(ip)
     GameManager.NetworkManager:SetIp(ipAddress)
     print("IP: " .. ip)
     print("IP Address: " .. GameManager.NetworkManager:GetIp():ToString())
+
 end
 
 local mainMenu = MainMenu:new()
