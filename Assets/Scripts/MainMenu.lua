@@ -16,6 +16,8 @@ function MainMenu:Update(dt)
 end
 
 function MainMenu:InitEditBox(sizeX, sizeY)
+    --local newScene = GameManager.SceneManager:CreateScene()
+
     print(self.editBox)
     local text = tgui.String("ip")
     gui:Add(self.editBox, text)
@@ -32,15 +34,18 @@ end
 function MainMenu:OnEditBoxReturn()
     local ip = self.editBox:GetText():ToStdString()
 
-    --MainMenu:SendIP(ip)
-    
-    local newScene = GameManager.SceneManager:CreateScene()
-    GameManager.SceneManager:ChangeScene(newScene)
+    MainMenu:SendIP(ip)
 
-    local player = GameManager.SceneManager:GetEntityManager():CreateEntity("Player")
+    local newScene = GameManager.SceneManager:CreateScene()
+    newScene:SetId("GameScene")
+    --GameManager.SceneManager:ChangeScene(newScene)
+
+    local player = GameManager.SceneManager:GetCurrentScene():GetEntityManager():CreateEntity("Player")
+
     player:AddScriptComponent("Assets/Scripts/Player.lua")
-    
-    --GameManager.SceneManager:
+    print("Player added")
+
+
 end
 
 function MainMenu:SendIP(ip)
