@@ -5,13 +5,23 @@ MainMenu = {
 }
 
 function MainMenu:new()
+--    MainMenu:SendIP("10.70.10.7")
+--    GameManager.NetworkStateManager:PushState(NetworkHostState())
     local inputField = {editBox = tgui.EditBox.Create()}
     setmetatable(inputField, self)
     self.__index = self 
     return inputField
 end
 
+function MainMenu:Init()
+    print("MainMenu Init")
+
+    local mainMenu = MainMenu:new()
+    mainMenu:InitEditBox(tgui.Layout(200), tgui.Layout(40))
+end
+
 function MainMenu:Update(dt)
+    --print("a")
     --print(self.editBox:GetText():ToStdString())
 end
 
@@ -32,20 +42,35 @@ function MainMenu:InitEditBox(sizeX, sizeY)
 end
 
 function MainMenu:OnEditBoxReturn()
-    local ip = self.editBox:GetText():ToStdString()
-
-    MainMenu:SendIP(ip)
-
     local newScene = GameManager.SceneManager:CreateScene()
     newScene:SetId("GameScene")
-    --GameManager.SceneManager:ChangeScene(newScene)
 
     local player = GameManager.SceneManager:GetCurrentScene():GetEntityManager():CreateEntity("Player")
-
     player:AddScriptComponent("Assets/Scripts/Player.lua")
-    print("Player added")
 
+    gui:Remove(self.editBox)
 
+    local ip = self.editBox:GetText():ToStdString()
+
+    if ip == "" then
+        return
+    end
+    
+    MainMenu:SendIP(ip)
+
+    if ip == "localhost" then
+        GameManager.NetworkStateManager:PushState(NetworkHostState())
+    else
+        GameManager.NetworkStateManager:PushState(NetworkConnectionState())
+    end
+
+--    local newScene = GameManager.SceneManager:CreateScene()
+--    newScene:SetId("GameScene")
+
+--    local player = GameManager.SceneManager:GetCurrentScene():GetEntityManager():CreateEntity("Player")
+--    player:AddScriptComponent("Assets/Scripts/Player.lua")
+
+--    gui:Remove(self.editBox)
 end
 
 function MainMenu:SendIP(ip)
@@ -56,7 +81,4 @@ function MainMenu:SendIP(ip)
 
 end
 
-local mainMenu = MainMenu:new()
-mainMenu:InitEditBox(tgui.Layout(200), tgui.Layout(40))
-
-return mainMenu
+return MainMenu

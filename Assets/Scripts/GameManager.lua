@@ -11,6 +11,7 @@ local function GameManager(super) -- super is optional, if not provided, it will
         RManager = ResourceManager:GetInstance(),
         EventManager = EventManager:GetInstance(),
         NetworkManager = NetworkManager:GetInstance(),
+        NetworkStateManager = NetworkStateManager:GetInstance(),
         SceneManager = SceneManager:GetInstance(),
     }
 

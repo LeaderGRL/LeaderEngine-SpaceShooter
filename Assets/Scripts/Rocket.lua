@@ -18,6 +18,8 @@ function Rocket:New(weaponsEntity)
         return
     end
 
+    print("buller position")
+    print(weaponsEntity:GetPosition().x + 16)
     if self.rocketCounter % 2 == 0 then
         entity:SetPosition(weaponsEntity:GetPosition().x + 16, weaponsEntity:GetPosition().y + 16) -- TODO : Refactor the function in C++ to allow a Vector2f in parameter
     else
@@ -35,6 +37,7 @@ function Rocket:New(weaponsEntity)
 end
 
 function Rocket:Update(dt)
+    --print("Rocket Update")
     Bullets.Update(self, dt)
 end
 

@@ -10,10 +10,20 @@ Player = {
     BManager = BulletManager:GetInstance(),
 }
 
+function Player:Init()
+    print("Player Init")
+
+    self:Create()
+    self:RegisterEvents()
+    --Weapons:RegisterEvents()
+
+    print("Player Init End")
+end
+
 function Player:Create()
     local player = self.EManager:CreateEntity(self.entityName)
     local playerEffect = player:AddChild("playerEffect")
-    
+
     if player then
         player:AddSprite2DComponent()
         player:AddBoxColliderComponent(Vector2f(64,64))
@@ -22,8 +32,9 @@ function Player:Create()
 
     if playerEffect then
         playerEffect:AddAnimation2DComponent("FighterEffectAnimation", true, true)
+        playerEffect:AddNetworkingComponent()
     end
-    
+
     local fighter = player:GetSprite2DComponent()
     local boxCollider = player:GetBoxColliderComponent()
     --local fighterEffect = playerEffect:GetSprite2DComponent()
@@ -39,7 +50,7 @@ function Player:Create()
 --    if fighterEffect then
 --        fighterEffect:PlayAnimation("FighterEffectAnimation", true)
 --    end
-    
+
     player:SetPosition(200,200)
     --playerEffect:SetPosition(25,25)
     Weapons:Create()
@@ -49,18 +60,12 @@ end
 
 function Player:OnKeyPressed(event)
     if sf.KeyEvent.GetKeyEventCode(event.key) == sf.KEY_Z then
-        self:Move(0,-1) 
-    end
-
-    if sf.KeyEvent.GetKeyEventCode(event.key) == sf.KEY_S then
+       self:Move(0,-1) 
+    elseif sf.KeyEvent.GetKeyEventCode(event.key) == sf.KEY_S then
        self:Move(0,1) 
-    end
-
-    if sf.KeyEvent.GetKeyEventCode(event.key) == sf.KEY_Q then
+    elseif sf.KeyEvent.GetKeyEventCode(event.key) == sf.KEY_Q then
        self:Move(-1,0)
-    end
-    
-    if sf.KeyEvent.GetKeyEventCode(event.key) == sf.KEY_D then
+    elseif sf.KeyEvent.GetKeyEventCode(event.key) == sf.KEY_D then
        self:Move(1,0)
     end
 end
@@ -68,13 +73,14 @@ end
 function Player:Move(x, y)
     local player = self.EManager:GetEntity(self.entityName)
     local playerWeapons = self.EManager:GetEntity(Weapons.weaponsName)
-    
+    player:SetDirty(true)
+
     player:Move_V(Vector2f(x * self.speed, y * self.speed))
     playerWeapons:Move_V(Vector2f(x * self.speed, y * self.speed))
 end
 
 function Player:SetSpeed(speed)
-    
+
 end
 
 function Player:RegisterEvents()
@@ -83,12 +89,13 @@ function Player:RegisterEvents()
 end
 
 function Player:Update(dt)
+    --print("b")
     self.BManager:Update(dt) -- Temp
 --    print(dt)
 end
--- Create the player and register events
---Player:Create()
---Player:RegisterEvents()
+---- Create the player and register events
+----Player:Create()
+----Player:RegisterEvents()
 --Weapons:RegisterEvents()
 
 return Player
